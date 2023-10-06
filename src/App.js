@@ -1,10 +1,18 @@
 import React from "react";
 
+
+
 const App = () => {
-  // request to user app
-  fetch("/api/users").then((res) => console.dir(res.json()));
+  
+  // request to internal api
+  fetch("/api/users").then((res) => res.json()).then(res => console.log("users:",res));
   // request to other api
-  fetch("https://fakestoreapi.com/products").then((res) => console.dir(res.json()));
+   fetch("https://fakestoreapi.com/products").then((res) => res.json()).then(res => console.log("products:",res));
+
+   
+
+  
+  
 
   return <div>home</div>;
 };
