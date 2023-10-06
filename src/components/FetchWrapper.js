@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { apiRoutes } from "../api/endpoint";
+import { apiRoutes } from "../apiRoutes/endpoint";
 
 export default function FetchWrapper() {
     useEffect(() => {
