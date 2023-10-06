@@ -5,7 +5,7 @@ export default function FetchWrapper() {
     useEffect(() => {
         const { fetch: originalFetch } = window;
         window.fetch = async (...params) => {
-            console.log('hit api route');
+            console.log('wrapper => hit api route');
             const [url, options] = params;
             let response;
             if (url in apiRoutes) {
