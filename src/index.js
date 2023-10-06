@@ -8,10 +8,8 @@ import FetchWrapper from "./components/FetchWrapper";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <React.Fragment>
-      <FetchWrapper/>
-      <App />
-    </React.Fragment>
+    <FetchWrapper />
+    <App />
   </React.StrictMode>
 );
 

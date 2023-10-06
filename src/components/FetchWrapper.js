@@ -1,25 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { apiRoutes } from "../apiRoutes/endpoint";
 
 export default function FetchWrapper() {
-    useEffect(() => {
-        const { fetch: originalFetch } = window;
-        window.fetch = async (...params) => {
-            console.log('wrapper => hit api route');
-            const [url, options] = params;
-            let response;
-            if (url in apiRoutes) {
-        
-              response = await fetch(apiRoutes[url], options);
-              
-            } else {
-        
-              response = await originalFetch(url, options);
-            }
-        
-            return response;
-          };
+  console.log("hit fetch wrapper");
+  const { fetch: originalFetch } = window;
+  window.fetch = async (...params) => {
+    const [url, options] = params;
+    let response;
+    if (url in apiRoutes) {
+      console.log("wrapper => app api route");
 
-    },[])
+      response = await fetch(apiRoutes[url]);
+    } else {
+      console.log("wrapper => external api route");
+
+      response = await originalFetch(url, options);
+    }
+
+    return response;
+  };
   return null;
 }
